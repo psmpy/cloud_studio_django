@@ -1,0 +1,44 @@
+{% extends 'blog/blog_index.html' %}
+{% load blog_extras %}
+{% load staticfiles %}
+
+
+
+{% block title %}{{ blog.title }}{% endblock %}
+
+{%block css%}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/blog_detail.css'%}"/> 
+{% endblock %}
+
+ 
+{% block content %}
+<div class="content">
+
+    <div class="content_path"><i class="fa fa-home fa-fw"></i>当前位置：<a href="/">Home</a> \ <a href="{% url 'blog:sort_index' category%}">{{category}}</a> \ <a href="#">{{blog.title}}</a> \</div>
+    
+      <div class="content_detail"><br>
+        <h2 class="content_detail_title">{{blog.title}}</h2><hr>
+<!---
+        <ul class="content_detail_addition"> 
+          <li class="fa fa-user"> <a href="#">{{blog.author}}</a> </li>
+          <li class="fa fa-calendar"> {{blog.create_time.date}} </li>
+          <li class="fa fa-comment"> 评论数({{blog.comment}}) </li> 
+          <li class="fa fa-eye"> {{blog.visits}}</li> 
+        </ul>
+--->
+        <div class="content_detail_body">
+          {{blog.body|safe}}
+        </div>
+    </div>
+
+    {% include 'comment/comment.html' %}
+
+</div>
+{% endblock %}
+
+
+{% block sidebar%}
+  <div class="sidebar">
+    <p>文章目录</p>
+  </div>
+{% endblock %}

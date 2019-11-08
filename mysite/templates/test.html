@@ -1,0 +1,47 @@
+{% extends 'main_base.html' %}
+{% load staticfiles %}
+
+
+{%block css%}
+
+     <link rel="stylesheet" type="text/css" href="{% static 'css/test.css'%}"/> 
+
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="shortcut icon" href="{% static 'images/mysite.ico' %}" />
+    
+{%endblock%}
+
+{% block container %}
+asdfasdfasd
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse" >
+                <ul class="nav navbar-nav">
+                    
+                        
+                        <li><a href="/" ><i class="menu-item-icon fa fa-fw fa-home fa-rotate-90"></i>首页</a></li>
+                        <li><a href="/archives/" ><i class="menu-item-icon fa fa fa-calendar"></i>归档</a></li>
+                        <li><a href="/categories/" ><i class="menu-item-icon fa fa fa-weibo fa-fa-pulse" style="font-size:larger"></i>分类</a></li>
+                        <li><a href="/books/" ><i class="menu-item-icon fa fa fa-weixin fa-spinner fa-pulse "></i>书s单</a></li>
+                        <li><a href="/movies/" ><i class="fa fa-film"></i>影单</a></li>
+                        <li><a href="/messages/" ><i class=" fa fa-pencil-square fa-3x"></i>留言</a></li>
+
+                            <li><a href="/talk"><i class="lm" style="font-family:FontAwesome"></i>&#xf2b9sds</a></li>
+                        
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                        <li class="">
+                            
+                            <a href="/my_notifications/"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                        </li>
+
+                    
+                    <li class="navbar-search ">
+                        <form action="/search/" class="navbar-form navbar-right">
+                            <input type="search" name="q"  placeholder="搜索..." autocomplete="off" class="form-control"/>
+                            <button type="submit"><span class="glyphicon glyphicon-cloud"></span></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+{% endblock %}

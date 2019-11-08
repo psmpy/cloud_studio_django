@@ -14,10 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.views.static import serve
+from . import views
+from . import settings
+#import django_comments
+import xadmin
+import DjangoUeditor
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    #path('admin/', admin.site.urls),
+    path('xadmin/', xadmin.site.urls),
+    path('ueditor/', include('DjangoUeditor.urls')),
+
+    re_path(r'media/(?P<path>.*)', serve, {'document_root':settings.MEDIA_ROOT}),
+    path('test/', views.test),
+
+    path('user/', include('user.urls')),
+    path('user/', include('django.contrib.auth.urls')),
+    path('comment/', include('comment.urls')),
+    path('', include('blog.urls')),
+    
+    
 ]

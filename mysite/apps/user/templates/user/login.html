@@ -1,0 +1,40 @@
+{% extends 'main_base.html' %}
+{% load staticfiles  %}
+
+{%block css%}
+{{block.super}}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}"/> 
+{%endblock%}
+  
+      
+{%block container%}
+<div class="main_container">
+    <p><a href="#">←返回上页</a></p>
+    
+    <div class="main_container_form">
+        <h2>xx</h2>
+        <form action="/user/login/" method="POST">{% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {% for field in form %}
+                        
+                        {{ field }}
+                        {{ field.errors }}
+                        <!--
+                        {% if field.help_text %}
+                            <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                        -->
+                    {% endfor %}
+            <div class="main_container_form_addi">
+                <span class="left"><a href=
+            <div class="main_container_form_addi">
+                <span class="left"><a href="#">忘记密码?</a></span>
+                <span class="right"><a href="/user/register/">没有账号，立即注册 ></a></span>
+            </div>
+            <input type="submit" value="登录">
+        </form>
+
+
+    </div>
+</div>
+{%endblock%}

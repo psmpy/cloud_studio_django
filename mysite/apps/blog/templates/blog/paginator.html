@@ -1,0 +1,10 @@
+    <div class="paginator" style="margin-top:20px;text-align:center;">
+      <ul class="paginator_list" style="margin:auto;width:80%;">
+      {%  for page_num in paginator.page_range %}
+        {% if paginator.num_pages > 1 %}
+        <li class="paginator_list_page" style="display:inline-block;background-color:yellowgreen;">
+          <a style="text-decoration:none; font-size:20px;padding:0 8px;" href="/blog/?page={{page_num}}">{{page_num}}</a></li>
+        {%endif%}
+      {% endfor %}
+      </ul>
+    </div>

@@ -1,0 +1,29 @@
+{% extends 'main_base.html' %}
+{% load staticfiles  %}
+
+{%block css%}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}"/> 
+{%endblock%}
+
+
+{%block container%}
+<div class="main_container">
+    <p><a href="#">←返回上页</a></p>
+    
+    <div class="main_container_form">
+        <h2>xx</h2>
+        <form action="/user/register/" method="POST">
+        {% csrf_token %}
+            <input type="text" name="username" placeholder="手机号/用户名/邮箱"><br>
+            <input type="password" name="password" placeholder="请输入密码"><br>
+            <input type="password" name="password" placeholder="请再次输入密码"><br>
+            <div class="main_container_form_addi">
+
+            </div>
+            <input type="submit" value="注册">
+        </form>
+
+
+    </div>
+</div>
+{%endblock%}

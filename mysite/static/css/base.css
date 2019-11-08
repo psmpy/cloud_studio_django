@@ -1,0 +1,63 @@
+@charset "utf-8";
+*{
+  padding:0px;
+  margin:0px;
+}
+
+/*顶部菜单*/
+.top_nav{
+  background-color: rgb(247, 242, 242);
+  height: 40px;
+  padding-top: 10px;
+  width: 100%;
+  position: fixed;
+  border-bottom: 1px solid #ccc;
+}
+.top_nav a:hover{color: rgb(107, 64, 150);}
+
+.top_nav_left{
+  height: 30px;
+  line-height: 30px;
+  padding-left:5%;
+  float: left;
+  }
+  .top_nav_right{
+  height: 30px;
+  line-height: 30px;
+  padding-left:2%;
+  float: right;
+  padding-right: 8%;
+  }
+
+.top_nav a{
+  text-decoration: none;
+  margin-left:5px;
+  color:rgb(78, 77, 77);
+}
+
+.top_nav_search{
+  display: inline-block;
+}
+input[type=text], select{
+  padding: 3px 5px;
+}
+
+.top_nav_search{
+  display: inline-block;
+}
+input[type=text], select{
+  padding: 3px 5px;
+ 
+}
+
+/*设置背景图片，铺满屏幕*/
+body{
+  
+  /*background: url(../images/header-bg.jpg) repeat-y;
+ height: 100%;
+  background-size: 100%;*/
+}
+ 
+ 
+
+

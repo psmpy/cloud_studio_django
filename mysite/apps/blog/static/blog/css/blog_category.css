@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+.content_index{
+  padding:5px 30px 5px 5px !important;
+  margin-bottom:8px !important;
+}
+.content_index_category{
+  border-bottom: 1px solid rgb(201, 197, 197);
+  padding:5px;
+  line-height: 20px;
+}
+.content_index_list span{
+  font-size: small;
+}
+.content_index_list li{
+  list-style-type: none;
+  padding: 5px 8px;
+}
+.content_index a{
+  text-decoration: none;
+  color: rgb(37, 36, 34);
+
+}

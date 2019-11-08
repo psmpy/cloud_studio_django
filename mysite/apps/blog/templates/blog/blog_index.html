@@ -1,0 +1,98 @@
+{% extends 'main_base.html' %}
+{% load staticfiles %}
+
+<!--CSS继承-->
+  {%block css%}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/blog_index.css'%}"/> 
+
+  {% endblock %}
+  
+ 
+<!--博客列表-->
+{% block content %}
+  <div class="content">
+    {% block content_path %}{%endblock%}
+
+    {% if page_blogs  %}
+        {% for blog in page_blogs %}
+        <div class="content_index">
+            <p class="content_index_title"><a href="{% url 'blog:detail'  blog.category.name blog.id %}">{{ blog.title }}</a></p>
+            {% autoescape off %}
+            <p class="content_index_abstract">{{blog.abstract}}</p>
+            {% endautoescape %}
+            <ul class="content_index_addition"> 
+            <li><i class="fa fa-user fa-fw"></i> <a href="#">{{blog.author}}</a> </li>
+            <li><i class="fa fa-calendar fa-fw"></i> {{blog.create_time|date:"Y-m-d H:m"}} </li>
+            <li><i class="fa fa-tag fa-fw"></i><a href="/{{blog.category.name}}/">{{blog.category.name}}</a> </li>
+            <li><i class="fa fa-comments fa-fw"></i>({{blog.comment}}) </li> 
+            <li><i class="fa fa-eye fa-fw"></i> {{blog.visits}}</li> 
+            </ul>
+            
+        </div>
+        {% endfor %}
+
+        <!--页码-->
+        {%block paginator%}
+        {% include 'blog/paginator.html' %}
+        {% endblock %}
+
+    {% else %}
+        <p class="content_index"style="padding:50px 30px;">#未找到相关内容</p>
+
+    {% endif %}
+  </div>
+{% endblock %}  
+
+  <!--侧边栏-->
+{% block sidebar %}
+  <div class="sidebar">
+     <!--站点信息-->
+      <div class="sidebar_one">
+        <p class="sidebar_title"><i class=" fa fa-refresh fa-spin fa-fw"></i>最新动态</p><hr />
+        <p>增加评论功能</p>
+      </div>
+
+    <!--友情链接-->
+    <div class="sidebar_link">
+      <p class="sidebar_title "><i class="fa fa-link fa-fw"></i>友情链接</p><hr />
+      <ul class="sidebar_link_list">
+          <li><a href="https://www.eastnotes.com/" target="_blank">向东的笔记</a></li>
+          <li><a href="https://www.dusaiphoto.com/" target="_blank">杜赛的个人网站</a></li>
+          <li><a href="https://www.zmrenwu.com/" target="_blank">追梦人物</a></li>
+          <li><a href="https://www.503error.com/" target="_blank">张志明</a></li>
+          <li><a href="https://cuiqingcai.com/" target="_blank">静觅</a></li>
+          <li><a href="https://www.yuanrenxue.com/" target="_blank">学python</a></li>
+          <li><a href="https://yshblog.com/" target="_blank">杨仕航</a></li>
+      </ul>
+    </div>
+    <!--分类目录-->
+      <div class="sidebar_sort">
+        <p class="sidebar_title"><i class="fa fa-sort fa-fw"></i>分类目录</p>
+        <hr />
+        <ul class="sidebar_sort_list">
+          {% for category_name, blog_queryset in category_to_blogs %}
+          {% if blog_queryset %}
+          <li><a href="/blog/{{category_name}}/" >{{category_name}}</a></li>
+          {%endif%}
+          {% endfor %}
+        </ul>
+      </div>
+      <!--归档-->
+      <div class="sidebar_random">
+        <p class="sidebar_title"><i class="fa fa-list fa-fw"></i>随机推荐</p><hr />
+        <ul class="sidebar_random_list">
+          {% for blog in rand_blogs%}
+          <li>
+            <a href="/blog/{{blog.category}}/{{blog.id}}/">{{blog.title}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+  </div>
+{%endblock%}  
+
+{% block footer %}
+  <div class="footer">
+      推开窗博客<i class="fa fa-copyright fa-fw" ></i>版权所有
+  </div>
+{% endblock %}

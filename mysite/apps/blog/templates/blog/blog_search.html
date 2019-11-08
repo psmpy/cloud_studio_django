@@ -1,0 +1,10 @@
+{% extends 'blog/blog_index.html' %}
+{% load staticfiles %}
+
+
+    {% block content_path %}
+    <p class="content_path" style="background-color:white;margin-bottom:2px;padding:3px;">
+      <i class="fa fa-bell fa-fw"></i>包含关键字 #<span style="color:red;">{{search_}}</span>#的搜索结果<i class="fa fa-angle-double-right fa-fw"></i>
+    </p>
+    {%endblock%}
+    

@@ -1,0 +1,31 @@
+{% load blog_extras %}
+
+<div class="comment">
+  <div class="comment_list">
+    <h3>评论列表</h3>
+    {% get_comments_list blog as comments %}
+    {% if comments %}
+      {% for comment in comments %}
+        {{comment.replyer}}回复{{comment.be_replyer}} <span>{{comment.create_time}}</span>
+        {{comment.content}}
+        <br>
+      {% endfor %}
+    {% else %}
+     <p>没有评论~~</p>
+    {% endif %}
+  </div>
+  <div class="comment_submit">
+    <h3>提交评论</h3>
+    <form  action="/comment/" method="POST">{% csrf_token %}
+      <input id="comment-form" type="text" name="content" placeholder="说点什么吧"/>
+      <button onclick="comment_sub()" type="submit" value="评论">评论</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function comment_sub(){
+    var x = document.getElementById('comment-form')
+    alert(x.value);
+  }
+</script>
